@@ -18,7 +18,7 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
 	exit;
 }
 
-// // language
-// qa_register_plugin_phrases('qa-auto-save-lang-*.php', 'qa_as_lang');
+// language
+qa_register_plugin_phrases('qa-auto-pmsg-lang-*.php', 'qa_apmsg_lang');
 // admin
-qa_register_plugin_module('module', 'qa-auto-pmsg-admin.php', 'q2a_auto_pmsg_admin', 'Auto PMSG Admin');
+qa_register_plugin_module('module', 'qa-auto-pmsg-admin.php', 'qa_auto_pmsg_admin', 'Auto PMSG Admin');

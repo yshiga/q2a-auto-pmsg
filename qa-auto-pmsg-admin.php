@@ -34,21 +34,21 @@ class qa_auto_pmsg_admin
 		$fields = array();
 
 		$fields[] = array(
-			'label' => '送信者名（ハンドル）',
+			'label' => qa_lang_html('qa_apmsg_lang/from_handle'),
 			'tags' => 'NAME="qa_auto_pmsg_from_handle"',
 			'value' => qa_opt('qa_auto_pmsg_from_handle'),
 			'type' => 'text'
 		);
 		
 		$fields[] = array(
-			'label' => '投稿有りユーザー向け',
+			'label' => qa_lang_html('qa_apmsg_lang/to_posted_user'),
 			'tags' => 'name="qa_auto_pmsg_message_for_posted"',
 			'value' => qa_opt('qa_auto_pmsg_message_for_posted'),
 			'type' => 'textarea',
 		);
 		
 		$fields[] = array(
-			'label' => '投稿なしユーザー向け',
+			'label' => qa_lang_html('qa_apmsg_lang/to_no_posted_user'),
 			'tags' => 'name="qa_auto_pmsg_message_for_no_posted"',
 			'value' => qa_opt('qa_auto_pmsg_message_for_no_posted'),
 			'type' => 'textarea',
