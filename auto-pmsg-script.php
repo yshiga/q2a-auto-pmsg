@@ -4,13 +4,13 @@ if (!defined('QA_VERSION')) {
     require_once dirname(empty($_SERVER['SCRIPT_FILENAME']) ? __FILE__ : $_SERVER['SCRIPT_FILENAME']).'/../../qa-include/qa-base.php';
 }
 
-require_once QA_PLUGIN_DIR.'test-plugin/test-db-client.php';
+require_once QA_PLUGIN_DIR.'q2a-auto-pmsg/auto-pmsg-db-client.php';
 require_once QA_INCLUDE_DIR.'db/messages.php';
 require_once QA_INCLUDE_DIR.'app/emails.php';
 
 error_log('start send direct message'.PHP_EOL);
 
-$users = q2a_dm_db_client::get_users_day_after_registration();
+$users = q2a_auto_pmsg_db_client::get_users_day_after_registration();
 
 
 foreach ($users as $user) {
@@ -21,7 +21,7 @@ foreach ($users as $user) {
     }
     $fromuserid = qa_handle_to_userid($fromhandle);
     
-    if (q2a_dm_db_client::is_user_posted($user['userid'])) {
+    if (q2a_auto_pmsg_db_client::is_user_posted($user['userid'])) {
         $message = qa_opt('qa_auto_pmsg_message_for_posted');
     } else {
         $message = qa_opt('qa_auto_pmsg_message_for_no_posted');
