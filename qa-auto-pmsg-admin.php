@@ -27,6 +27,8 @@ class qa_auto_pmsg_admin
 		$ok = null;
 		if (qa_clicked('qa_auto_pmsg_save')) {
 			qa_opt('qa_auto_pmsg_from_handle', qa_post_text('qa_auto_pmsg_from_handle'));
+			qa_opt('qa_auto_pmsg_message_for_posted', qa_post_text('qa_auto_pmsg_message_for_posted'));
+			qa_opt('qa_auto_pmsg_message_for_no_posted', qa_post_text('qa_auto_pmsg_message_for_no_posted'));
 			$ok = qa_lang('admin/options_saved');
 		}
 
