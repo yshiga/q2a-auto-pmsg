@@ -6,11 +6,11 @@ class qa_auto_pmsg_admin
 	{
 		switch ($option) {
 			case 'qa_auto_pmsg_from_handle':
-				return '管理人';
+				return qa_lang_html('qa_apmsg_lang/default_handle');
 			case 'qa_auto_pmsg_message_for_posted':
-				return '投稿しているユーザー向けメッセージ内容';
+				return qa_lang_html('qa_apmsg_lang/default_for_posted');
 			case 'qa_auto_pmsg_message_for_no_posted':
-				return 'まだ投稿していないユーザー向けメッセージ内容';
+				return qa_lang_html('qa_apmsg_lang/default_for_no_post');
 			default:
 				return;
 		}
