@@ -17,7 +17,7 @@ foreach ($users as $user) {
     
     $fromhandle = qa_opt('qa_auto_pmsg_from_handle');
     if (empty($fromhandle)) {
-        $fromhandle = '管理人';
+        $fromhandle = qa_lang_html('qa_apmsg_lang/default_handle');
     }
     $fromuserid = qa_handle_to_userid($fromhandle);
     
