@@ -12,25 +12,21 @@ error_log('start send direct message'.PHP_EOL);
 
 $users = q2a_auto_pmsg_db_client::get_users_day_after_registration();
 
-
 foreach ($users as $user) {
+
+    $user = array('userid' => '3240', 'handle' => 'devuser');
     
-    $fromhandle = qa_opt('qa_auto_pmsg_from_handle');
-    if (empty($fromhandle)) {
-        $fromhandle = qa_lang_html('qa_apmsg_lang/default_handle');
-    }
-    $fromuserid = qa_handle_to_userid($fromhandle);
+    $fromuserid = 1;
+    $fromhandle = qa_userid_to_handle($fromuserid);
+
+    $message = "ミツバチのQ&Aにご登録いただき、誠にありがとうございます。\n\n ミツバチのQ&Aには、ユーザー同士でメッセージをやり取りする機能があります。\n\n お互いにメールアドレスを公開することなく、メッセージが送れます。ぜひ交流にお役立てください。\n\n なお、メッセージを送信できるのは、お互いにフォローしているユーザーだけです。\n\n";
     
-    if (q2a_auto_pmsg_db_client::is_user_posted($user['userid'])) {
-        $message = qa_opt('qa_auto_pmsg_message_for_posted');
-    } else {
-        $message = qa_opt('qa_auto_pmsg_message_for_no_posted');
-    }
+    if (!q2a_auto_pmsg_db_client::is_user_posted($user['userid'])) {
+        $message .= "なお、質問の投稿は、次のページから行うことができます。困ったことがあればお気軽に質問してください。\n\nhttps://38qa.net/ask \n\n";
+    } 
+    $message .= "今後ともミツバチのQ&Aをよろしくお願いいたします。";
     
-    if (qa_opt('show_message_history'))
-        $messageid = qa_db_message_create($fromuserid, $user['userid'], $message, '', false);
-    else
-        $messageid = null;
+    $messageid = qa_db_message_create($fromuserid, $user['userid'], $message, '', false);
 
     qa_report_event('u_message', $fromuserid, $fromhandle, null, array(
         'userid' => $user['userid'],
@@ -40,4 +36,3 @@ foreach ($users as $user) {
     ));
 }
 
-error_log('end send direct message'.PHP_EOL);
